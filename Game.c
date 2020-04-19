@@ -127,10 +127,9 @@ playerType GetPlayerRole()
             return Host;
         }
     }
-    else
-    {
-        return Client;
-    }
+
+    return Client;
+
 }
 
 /*
