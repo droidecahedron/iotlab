@@ -87,6 +87,13 @@
 #define BLUE_LED BIT2
 #define RED_LED BIT0
 
+/* Get MAC address*/
+#define GET_MAC_ADDR sl_Start(NULL, NULL, NULL);\
+    _u8 MAC_ADDR[SL_MAC_ADDR_LEN];\
+    _u8 MAC_ADDR_LEN = SL_MAC_ADDR_LEN;\
+    sl_NetCfgGet(SL_MAC_ADDRESS_GET, NULL, &MAC_ADDR_LEN, (_u8 *) MAC_ADDR)
+
+
 /* Enums for player colors */
 typedef enum
 {

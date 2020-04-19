@@ -117,7 +117,21 @@ void MoveLEDs();
 /*
  * Returns either Host or Client depending on button press
  */
-playerType GetPlayerRole();
+playerType GetPlayerRole()
+{
+    if(!( (P4->IN)&(1<<4)) ) // if its low, then it is pressed.
+    {
+        DelayMs(50);
+        if(!( (P4->IN)&(1<<4)) )
+        {
+            return Host;
+        }
+    }
+    else
+    {
+        return Client;
+    }
+}
 
 /*
  * Draw players given center X center coordinate
