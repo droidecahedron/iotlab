@@ -19,6 +19,17 @@
 /*********************************************** Externs ********************************************************************/
 
 /* Semaphores here */ 
+semaphore_t joystickMutex;
+semaphore_t LCDMutex;
+semaphore_t sendMutex;
+semaphore_t receiveMutex;
+//maybe more
+semaphore_t gsMutex_LED;
+semaphore_t gsMutex_previous;
+semaphore_t gsMutex_current;
+
+
+
 
 /*********************************************** Externs ********************************************************************/
 
@@ -121,9 +132,9 @@ typedef struct
     uint32_t IP_address;
     int16_t displacement;
     uint8_t playerNumber;
-    bool ready;
+    uint8_t ready;
     bool joined;
-    bool acknowledge;
+    uint8_t acknowledge;
 } SpecificPlayerInfo_t;
 
 /*
@@ -144,6 +155,8 @@ typedef struct
 {
     int16_t currentCenterX;
     int16_t currentCenterY;
+    int16_t Xvel;
+    int16_t Yvel;
     uint16_t color;
     bool alive;
 } Ball_t;
@@ -180,6 +193,12 @@ typedef struct
 {
     int16_t Center;
 }PrevPlayer_t;
+
+
+//i need this
+playerType role;
+
+
 /*********************************************** Data Structures ********************************************************************/
 
 
