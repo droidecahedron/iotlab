@@ -11,9 +11,9 @@
 /*********************************************** Includes ********************************************************************/
 #include <stdbool.h>
 #include <stdint.h>
-#include "../G8RTOS_Lab3/G8RTOS.h"
+#include "../G8RTOS_Lab5/G8RTOS.h"
 #include "cc3100_usage.h"
-#include "LCD/LCD.h"
+#include "LCD.h"
 /*********************************************** Includes ********************************************************************/
 
 /*********************************************** Externs ********************************************************************/
@@ -28,12 +28,15 @@ semaphore_t gsMutex_LED;
 semaphore_t gsMutex_previous;
 semaphore_t gsMutex_current;
 
-
-
-
 /*********************************************** Externs ********************************************************************/
 
 /*********************************************** Global Defines ********************************************************************/
+#define GET_MAC_ADDR sl_Start(NULL, NULL, NULL);\
+    _u8 MAC_ADDR[SL_MAC_ADDR_LEN];\
+    _u8 MAC_ADDR_LEN = SL_MAC_ADDR_LEN;\
+    sl_NetCfgGet(SL_MAC_ADDRESS_GET, NULL, &MAC_ADDR_LEN, (_u8 *) MAC_ADDR)
+
+
 #define MAX_NUM_OF_PLAYERS  2
 #define MAX_NUM_OF_BALLS    8
 
@@ -98,13 +101,6 @@ semaphore_t gsMutex_current;
 #define BLUE_LED BIT2
 #define RED_LED BIT0
 
-/* Get MAC address*/
-#define GET_MAC_ADDR sl_Start(NULL, NULL, NULL);\
-    _u8 MAC_ADDR[SL_MAC_ADDR_LEN];\
-    _u8 MAC_ADDR_LEN = SL_MAC_ADDR_LEN;\
-    sl_NetCfgGet(SL_MAC_ADDRESS_GET, NULL, &MAC_ADDR_LEN, (_u8 *) MAC_ADDR)
-
-
 /* Enums for player colors */
 typedef enum
 {
@@ -132,9 +128,9 @@ typedef struct
     uint32_t IP_address;
     int16_t displacement;
     uint8_t playerNumber;
-    uint8_t ready;
+    bool ready;
     bool joined;
-    uint8_t acknowledge;
+    bool acknowledge;
 } SpecificPlayerInfo_t;
 
 /*
@@ -143,9 +139,9 @@ typedef struct
  */
 typedef struct
 {
-    int16_t currentCenter; // center of paddle
+    int16_t currentCenter;
     uint16_t color;
-    playerPosition position; // top or bottom
+    playerPosition position;
 } GeneralPlayerInfo_t;
 
 /*
@@ -155,8 +151,6 @@ typedef struct
 {
     int16_t currentCenterX;
     int16_t currentCenterY;
-    int16_t Xvel;
-    int16_t Yvel;
     uint16_t color;
     bool alive;
 } Ball_t;
@@ -314,6 +308,9 @@ void UpdateBallOnScreen(PrevBall_t * previousBall, Ball_t * currentBall, uint16_
  * Initializes and prints initial game state
  */
 void InitBoardState();
+
+
+void MinkowskiAlgorithm();
 
 /*********************************************** Public Functions *********************************************************************/
 

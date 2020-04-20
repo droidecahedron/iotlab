@@ -1,26 +1,12 @@
-#include "msp.h"
-#include "BSP.h"
-#include "G8RTOS_Lab3/G8RTOS.h"
-#include "G8RTOS_Lab3/G8RTOS_IPC.h"
-#include "led/led.h"
+/*
+ * Game.c
+ *
+ *  Created on: Apr 18, 2020
+ *      Author: Jovan
+ */
 #include "Game.h"
-#include <stdbool.h>
-#include "G8RTOS_Lab3/G8RTOS_Structures.h"
 
 
-#define LCD_WHITE          0xFFFF
-#define LCD_BLACK          0x0000
-#define LCD_BLUE           0x0197
-#define LCD_RED            0xF800
-#define LCD_MAGENTA        0xF81F
-#define LCD_GREEN          0x07E0
-#define LCD_CYAN           0x7FFF
-#define LCD_YELLOW         0xFFE0
-#define LCD_GRAY           0x2104
-#define LCD_PURPLE         0xF11F
-#define LCD_ORANGE         0xFD20
-#define LCD_PINK           0xfdba
-#define LCD_OLIVE          0xdfe4
 
 //i hate the rona
 int johnny_laptop_ip = 0xc0a8000b; // 192.168.0.11
@@ -466,5 +452,32 @@ void InitBoardState()
     snprintf(str,64,"%d",gamestate.overallScores[Client]);
     LCD_Text(0,0,str,LCD_BLUE); // client is on the top
 }
+
+
+
+void MinkowskiAlgorithm()
+{
+    nt32_t w = 0.5 * (A.width() + B.width());
+    Int32_t h = 0.5 * (A.height() + B.height());
+    Int32_t dx = A.centerX() - B.centerX();
+    Int32_t dy = A.centerY() - B.centerY();
+    if (abs(dx) <= w && abs(dy) <= h)
+    {
+    /* collision! */
+    Int32_t wy = w * dy;
+    Int32_t hx = h * dx;
+    if (wy > hx)
+    if (wy > -hx)
+    /* collision at the top */
+    else
+    /* on the left */
+    else
+    if (wy > -hx)
+    /* on the right */
+    else
+    /* at the bottom */
+    }
+}
+
 
 /*********************************************** Public Functions *********************************************************************/
