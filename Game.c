@@ -94,7 +94,6 @@ void JoinGame()
     BITBAND_PERI(P2->OUT,2) ^= 1; // CLIENT IS BLUE
     InitBoardState();
     G8RTOS_AddThread(&ReadJoystickClient, 5, "RD_JOYSTICK");
-    G8RTOS_AddThread(&GenerateBall, 6, "GENBALL");
     G8RTOS_AddThread(&SendDataToHost, 1, "IP_DAT_TX");
     G8RTOS_AddThread(&ReceiveDataFromHost, 2, "IP_DAT_RX");
     G8RTOS_AddThread(&DrawObjects,3,"DRAW_OBJ");
