@@ -19,14 +19,13 @@
 /*********************************************** Externs ********************************************************************/
 
 /* Semaphores here */ 
-semaphore_t joystickMutex;
+//semaphore_t joystickMutex; ?DEBUG dont really need this
 semaphore_t LCDMutex;
-semaphore_t sendMutex;
-semaphore_t receiveMutex;
-//maybe more
-semaphore_t gsMutex_LED;
-semaphore_t gsMutex_previous;
-semaphore_t gsMutex_current;
+semaphore_t ipMutex;
+semaphore_t LEDMutex;
+semaphore_t gamestateMutex;
+//semaphore_t gsMutex_previous;
+//semaphore_t gsMutex_current;
 
 
 
@@ -166,7 +165,7 @@ typedef struct
  */
 typedef struct
 {
-    SpecificPlayerInfo_t player;
+    SpecificPlayerInfo_t player[MAX_NUM_OF_PLAYERS];
     GeneralPlayerInfo_t players[MAX_NUM_OF_PLAYERS];
     Ball_t balls[MAX_NUM_OF_BALLS];
     uint16_t numberOfBalls;
@@ -285,6 +284,13 @@ void DrawObjects();
  * Thread to update LEDs based on score
  */
 void MoveLEDs();
+
+
+/*
+ * Aperiodic thread for a button press
+ */
+
+void StartGameAgain(void);
 
 /*********************************************** Common Threads *********************************************************************/
 

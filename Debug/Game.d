@@ -57,6 +57,12 @@ Game.obj: C:/Users/Johnny/codecomposerworkspace/up2/lab5/CC3100SupportPackage/si
 Game.obj: C:/Users/Johnny/codecomposerworkspace/up2/lab5/CC3100SupportPackage/SL_Common/sl_common.h
 Game.obj: ../LCD/LCD.h
 Game.obj: ../G8RTOS_Lab3/G8RTOS_Structures.h
+Game.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/math.h
+Game.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/_defs.h
+Game.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/machine/_limits.h
+Game.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/time.h
+Game.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/abi_prefix.h
+Game.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/xlocale/_time.h
 
 ../Game.c: 
 C:/ti/ccsv8/ccs_base/arm/include/msp.h: 
@@ -115,3 +121,9 @@ C:/Users/Johnny/codecomposerworkspace/up2/lab5/CC3100SupportPackage/simplelink/i
 C:/Users/Johnny/codecomposerworkspace/up2/lab5/CC3100SupportPackage/SL_Common/sl_common.h: 
 ../LCD/LCD.h: 
 ../G8RTOS_Lab3/G8RTOS_Structures.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/math.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/_defs.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/machine/_limits.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/time.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/abi_prefix.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/xlocale/_time.h: 

@@ -88,6 +88,9 @@ sched_ErrCode_t G8RTOS_KillSelf(void);
 //kills thread
 sched_ErrCode_t G8RTOS_KillThread(threadId_t threadID);
 
+//kil all threads
+sched_ErrCode_t G8RTOS_KillAllThreads();
+
 //get the thread id
 threadId_t G8RTOS_GetThreadId(void);
 

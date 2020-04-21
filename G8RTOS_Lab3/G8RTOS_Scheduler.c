@@ -476,6 +476,25 @@ sched_ErrCode_t G8RTOS_KillThread(threadId_t killthreadID)
 }
 
 
+sched_ErrCode_t G8RTOS_KillAllThreads(void)
+{
+    int32_t PRIMASK_STATE = StartCriticalSection();
+    if(NumberOfThreads<=1)
+    {
+        EndCriticalSection(PRIMASK_STATE);
+        return CANNOT_KILL_LAST_THREAD;
+    }
+
+    tcb_t* threadPtr = CurrentlyRunningThread->Next_TCB;
+    for(int i=0;i<NumberOfThreads-1;i++) //<-1 to avoid killing last thread.
+    {
+        G8RTOS_KillThread(threadPtr->threadID);
+        threadPtr = threadPtr->Next_TCB;
+    }
+    EndCriticalSection(PRIMASK_STATE);
+    return NO_ERROR;
+}
+
 
 //get thread id
 threadId_t G8RTOS_GetThreadId(void)

@@ -26,24 +26,23 @@ void main(void)
     P4->OUT |= BIT4; // Sets res to pull-up
     P4->DIR &= ~BIT4; // its an input
     P4->REN |= BIT4; // Pull-up resister
-
     //button 1
     P4->OUT |= BIT5;
     P4->DIR &= ~BIT5;
     P4->REN |= BIT5;
 
-
-
 //    // get the MAC address
 //    GET_MAC_ADDR;
 //    initCC3100(Host);
 
-//    G8RTOS_InitSemaphore(&joystickMutex,1);
+    G8RTOS_InitSemaphore(&joystickMutex,1);
     G8RTOS_InitSemaphore(&LCDMutex,1);
-    G8RTOS_InitSemaphore(&ipMutex,1);
+    G8RTOS_InitSemaphore(&sendMutex,1);
+    G8RTOS_InitSemaphore(&receiveMutex,1);
     //gamestate semaphores
+//    G8RTOS_InitSemaphore(&gsMutex_current,1);
+//    G8RTOS_InitSemaphore(&gsMutex_previous,1);
     G8RTOS_InitSemaphore(&gamestateMutex,1);
-
 
     //LED score mutex
     //.. if your current LED scores dont match your previous LED scores, signal
