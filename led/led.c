@@ -89,7 +89,7 @@ void init_RGBLEDS()
 
     //set the Fclk as 400 khz
     uint32_t clkspeed = CS_getSMCLK();
-    clkspeed = clkspeed / 400000;
+    clkspeed = clkspeed / 400000.0;
     UCB2BRW = clkspeed;
 
     //set pins as i2c mode
@@ -102,9 +102,9 @@ void init_RGBLEDS()
     //bitwise and all bits except ucswrst
     UCB2CTLW0 &= ~UCSWRST;
 
-    LP3943_LEDModeSet(RED, UNIT_OFF);
-    LP3943_LEDModeSet(GREEN, UNIT_OFF);
-    LP3943_LEDModeSet(BLUE, UNIT_OFF);
+//    LP3943_LEDModeSet(RED, UNIT_OFF);
+//    LP3943_LEDModeSet(GREEN, UNIT_OFF);
+//    LP3943_LEDModeSet(BLUE, UNIT_OFF);
 
 
 }
