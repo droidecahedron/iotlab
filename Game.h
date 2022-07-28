@@ -19,6 +19,16 @@
 /*********************************************** Externs ********************************************************************/
 
 /* Semaphores here */ 
+//semaphore_t joystickMutex; ?DEBUG dont really need this
+semaphore_t LCDMutex;
+semaphore_t ipMutex;
+semaphore_t LEDMutex;
+semaphore_t gamestateMutex;
+//semaphore_t gsMutex_previous;
+//semaphore_t gsMutex_current;
+
+
+
 
 /*********************************************** Externs ********************************************************************/
 
@@ -87,6 +97,13 @@
 #define BLUE_LED BIT2
 #define RED_LED BIT0
 
+/* Get MAC address*/
+#define GET_MAC_ADDR sl_Start(NULL, NULL, NULL);\
+    _u8 MAC_ADDR[SL_MAC_ADDR_LEN];\
+    _u8 MAC_ADDR_LEN = SL_MAC_ADDR_LEN;\
+    sl_NetCfgGet(SL_MAC_ADDRESS_GET, NULL, &MAC_ADDR_LEN, (_u8 *) MAC_ADDR)
+
+
 /* Enums for player colors */
 typedef enum
 {
@@ -114,9 +131,9 @@ typedef struct
     uint32_t IP_address;
     int16_t displacement;
     uint8_t playerNumber;
-    bool ready;
+    uint8_t ready;
     bool joined;
-    bool acknowledge;
+    uint8_t acknowledge;
 } SpecificPlayerInfo_t;
 
 /*
@@ -137,6 +154,8 @@ typedef struct
 {
     int16_t currentCenterX;
     int16_t currentCenterY;
+    int16_t Xvel;
+    int16_t Yvel;
     uint16_t color;
     bool alive;
 } Ball_t;
@@ -146,7 +165,7 @@ typedef struct
  */
 typedef struct
 {
-    SpecificPlayerInfo_t player;
+    SpecificPlayerInfo_t player[MAX_NUM_OF_PLAYERS];
     GeneralPlayerInfo_t players[MAX_NUM_OF_PLAYERS];
     Ball_t balls[MAX_NUM_OF_BALLS];
     uint16_t numberOfBalls;
@@ -173,6 +192,12 @@ typedef struct
 {
     int16_t Center;
 }PrevPlayer_t;
+
+
+//i need this
+playerType role;
+
+
 /*********************************************** Data Structures ********************************************************************/
 
 
@@ -259,6 +284,13 @@ void DrawObjects();
  * Thread to update LEDs based on score
  */
 void MoveLEDs();
+
+
+/*
+ * Aperiodic thread for a button press
+ */
+
+void StartGameAgain(void);
 
 /*********************************************** Common Threads *********************************************************************/
 
