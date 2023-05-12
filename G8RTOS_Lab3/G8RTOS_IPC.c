@@ -2,7 +2,7 @@
  * G8RTOS_IPC.c
  *
  *  Created on: Jan 10, 2017
- *      Author: Daniel Gonzalez
+ *      Author: Johnny Nguyen
  */
 #include <stdint.h>
 #include "msp.h"
